@@ -20,4 +20,11 @@ public interface IJoueurService {
     public Joueur updateJoueur(Long id, Joueur joueur);
 
 
+    public Joueur ajouterJoueurEtAffecterAEquipe (Joueur joueur, Long idEquipe);
+
+    public Joueur ajouterJoueurEtAffecterAParent (Joueur joueur, Long idParent);
+
+    public Joueur ajouterJoueurEtAffecterAParentAndEquipe (Joueur joueur, Long idParent, Long idEquipe);
+
+
 }

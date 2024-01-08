@@ -4,6 +4,7 @@ package com.example.academiee.Service;
 import com.example.academiee.Entities.*;
 import com.example.academiee.Repository.EquipeRepository;
 import com.example.academiee.Repository.JoueurRepository;
+import com.example.academiee.Repository.ParentRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -17,6 +18,7 @@ public class JoueurService implements IJoueurService {
 
     JoueurRepository joueurRepository;
     EquipeRepository equipeRepository;
+    ParentRepository parentRepository;
 
 
     @Override
@@ -57,6 +59,29 @@ public class JoueurService implements IJoueurService {
             return joueurRepository.save(toUpdateJoueur);
         }
         return null;
+    }
+
+    @Override
+    public Joueur ajouterJoueurEtAffecterAEquipe(Joueur joueur, Long idEquipe) {
+        Equipe equipe = equipeRepository.findById(idEquipe).orElse(null);
+        joueur.setEquipe(equipe);
+        return joueurRepository.save(joueur );
+    }
+
+    @Override
+    public Joueur ajouterJoueurEtAffecterAParent(Joueur joueur, Long idParent) {
+        Parent parent = parentRepository.findById(idParent).orElse(null);
+        joueur.setParent(parent);
+        return joueurRepository.save(joueur );
+    }
+
+    @Override
+    public Joueur ajouterJoueurEtAffecterAParentAndEquipe(Joueur joueur, Long idParent, Long idEquipe) {
+        Parent parent = parentRepository.findById(idParent).orElse(null);
+        Equipe equipe = equipeRepository.findById(idEquipe).orElse(null);
+        joueur.setParent(parent);
+        joueur.setEquipe(equipe);
+        return joueurRepository.save(joueur );
     }
 
 

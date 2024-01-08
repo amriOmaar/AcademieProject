@@ -46,4 +46,24 @@ public class JoueurController {
         return joueurService.deleteJoueur(idJoueur);
     }
 
+
+    @PostMapping("ajouterJoueurEtAffecterAEquipe/{idEquipe}")
+    public Joueur ajouterJoueurEtAffecterAEquipe(@RequestBody Joueur joueur,
+                                                 @PathVariable("idEquipe") Long idEquipe) {
+        return joueurService.ajouterJoueurEtAffecterAEquipe(joueur, idEquipe);
+    }
+
+    @PostMapping("ajouterJoueurEtAffecterAParent/{idParent}")
+    public Joueur ajouterJoueurEtAffecterAParent(@RequestBody Joueur joueur,
+                                                 @PathVariable("idParent") Long idParent) {
+        return joueurService.ajouterJoueurEtAffecterAParent(joueur, idParent);
+    }
+
+        @PostMapping("ajouterJoueurEtAffecterAParentAndEquipe/{idParent}/{idEquipe}")
+    public Joueur ajouterJoueurEtAffecterAParentAndEquipe(@RequestBody Joueur joueur,
+                                                          @PathVariable("idParent") Long idParent,
+                                                          @PathVariable("idEquipe") Long idEquipe) {
+        return joueurService.ajouterJoueurEtAffecterAParentAndEquipe(joueur, idParent, idEquipe);
+    }
+
 }
